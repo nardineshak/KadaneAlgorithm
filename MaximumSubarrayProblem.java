@@ -1,6 +1,3 @@
-
-
-
 public class MaximumSubarrayProblem {
 
     public static void main(String[] args) {
@@ -17,14 +14,33 @@ public class MaximumSubarrayProblem {
 
     }
 
+    // Solution 1
     public static int maxSubArray(int[] nums) {
+        int localMax = 0;
+        int globalMax = Integer.MIN_VALUE;
+
+        for (int i = 0; i < nums.length; i++) {
+            // the local max will be nums[i] or nums[i] + localMax 
+            // (since we already know the max of the previous subarray)
+            // no need to recompute it 
+            localMax = Math.max(nums[i], localMax + nums[i]);
+            globalMax = Math.max(globalMax, localMax); // keeps track of the max of the whole array 
+        }
+
+        return globalMax;
+    }
+
+    // Solution 2
+    public static int maxSubArray2(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
         int currSum = 0;
 
         for (int i = 0; i < nums.length; i++) {
             currSum += nums[i];
-            maxSum = Math.max(maxSum, currSum);
-
+            maxSum = Math.max(maxSum, currSum); // same idea as global_max in solution1
+            
+            // if the sum becomes negative means the 
+            // previous subarrays don't result in max so set currSum to 0 to restart in essence 
             if (currSum < 0) {
                 currSum = 0;
             }
