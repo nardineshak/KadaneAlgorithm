@@ -1,8 +1,6 @@
 # Kadane Algorithm
 Leetcode Problems using Kadane's Algorithm
 
-Sure, here's a more explanatory version:
-
 ### Kadane’s Algorithm (Maximum Subarray Problem & Maximum Product Subarray Problem)
 
 **What is Dynamic Programming?**
